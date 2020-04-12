@@ -15,9 +15,4 @@ jobs:
         with:
           deno-version: 0.40.0
       - run: deno fmt
-      - uses: andymckay/append-gist-action@master
-        with:
-          gistURL: "https://gist.github.com/ronhippler/11330855c907ea17aa6b287eb8f869d9"
-          token: $TOKEN
-          file: "test.ts"
-          suffix: $matrix.os
+      - run: cat -e test.ts
