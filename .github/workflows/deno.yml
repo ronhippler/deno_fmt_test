@@ -19,3 +19,4 @@ jobs:
         with:
           name: ${{ matrix.os }}
           path: test.ts
+      - run: deno fmt --check
