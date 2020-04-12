@@ -15,4 +15,7 @@ jobs:
         with:
           deno-version: 0.40.0
       - run: deno fmt
-      - run: cat -e test.ts
+      - uses: actions/upload-artifact@v1
+        with:
+          name: ${{ matrix.os }}
+          path: test.ts
