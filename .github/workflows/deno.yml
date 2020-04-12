@@ -14,9 +14,17 @@ jobs:
       - uses: denolib/setup-deno@master
         with:
           deno-version: 0.40.0
-      - run: deno fmt
-      - uses: actions/upload-artifact@v1
-        with:
-          name: ${{ matrix.os }}
-          path: test.ts
       - run: deno fmt --check
+      - run: deno fmt
+        if: always()
+      - run: deno fmt --check
+        if: always()
+      - run: mkdir ${{ matrix.os }}
+        if: always()
+      - run: mv test.ts ${{ matrix.os }}/test.ts
+        if: always()
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: artifact
+          path: .
